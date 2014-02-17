@@ -10,13 +10,14 @@
 
 * http://oj.leetcode.com/problems/linked-list-cycle/
 
-### Reference
-https://en.wikipedia.org/wiki/Linked_list
-
 ### Questions
 
-What problem does linked-list solve when it was firstly introduced?
+* What problem does linked-list solve when it was firstly introduced?
+* When to use doubly linked-list prior to singly linked-list?
 
-When to use doubly linked-list prior to singly linked-list?
+### Reference
+
+https://en.wikipedia.org/wiki/Linked_list
+
 
 
