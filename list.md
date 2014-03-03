@@ -39,6 +39,6 @@ https://en.wikipedia.org/wiki/Linked_list
 
 [Linked List Cycle II ](http://oj.leetcode.com/problems/linked-list-cycle-ii/)
 
-[Copy List with Random Pointer](http://oj.leetcode.com/problems/copy-list-with-random-pointer/)
+~~[Copy List with Random Pointer](http://oj.leetcode.com/problems/copy-list-with-random-pointer/)~~
 
 [Partition List](http://oj.leetcode.com/problems/partition-list/)
