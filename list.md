@@ -42,3 +42,5 @@ https://en.wikipedia.org/wiki/Linked_list
 ~~[Copy List with Random Pointer](http://oj.leetcode.com/problems/copy-list-with-random-pointer/)~~
 
 [Partition List](http://oj.leetcode.com/problems/partition-list/)
+
+[Insertion Sort List](http://oj.leetcode.com/problems/insertion-sort-list/)
