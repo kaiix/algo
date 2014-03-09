@@ -17,6 +17,6 @@
 
 ### Reference
 
-[wikipedia](http://en.wikipedia.org/wiki/Array_data_structure)
+[http://en.wikipedia.org/wiki/Array_data_structure](http://en.wikipedia.org/wiki/Array_data_structure)
 
 
