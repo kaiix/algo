@@ -8,7 +8,7 @@ class Solution:
         elif A[0] == target:
             return 0
         elif len(A) == 1:
-            return  -1
+            return -1
 
         r = self.findRight(A, 1, len(A) - 1)
         if A[0] == target:
