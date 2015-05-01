@@ -14,19 +14,20 @@ def anagrams(strs):
 
 
 def anagrams_once(strs):
-        groups = {}
-        result = []
-        for i in xrange(len(strs)):
-            s = ''.join(sorted(strs[i]))
-            if s not in groups:
-                groups[s] = i
-            else:
-                if groups[s] >= 0:
-                    result.append(strs[groups[s]])
-                    groups[s] = -1
-                result.append(strs[i])
-        return result
+    m = {}
+    result = []
+    for i in xrange(len(strs)):
+        s = ''.join(sorted(strs[i]))
+        if s not in m:
+            m[s] = i
+        else:
+            if m[s] >= 0:
+                result.append(strs[m[s]])
+                m[s] = -1
+            result.append(strs[i])
+    return result
 
 
 if __name__ == '__main__':
+    print anagrams(['tea', 'and', 'ate', 'eat', 'dan'])
     print anagrams_once(['tea', 'and', 'ate', 'eat', 'dan'])
