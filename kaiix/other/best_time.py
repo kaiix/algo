@@ -5,12 +5,13 @@ def maxProfit(prices):
     if len(prices) <= 1:
         return 0
 
-    m = 0
+    maxPrice = 0
+    maxProfit = 0
     for i in reversed(xrange(len(prices))):
-        if prices[i] > m:
-            m = prices[i]
-        prices[i] = m - prices[i]
-    return max(prices)
+        if prices[i] > maxPrice:
+            maxPrice = prices[i]
+        maxProfit = max(maxProfit, maxPrice - prices[i])
+    return maxProfit
 
 
 if __name__ == '__main__':
