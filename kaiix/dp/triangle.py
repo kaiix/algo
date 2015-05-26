@@ -1,7 +1,10 @@
 #  https://leetcode.com/problems/triangle/
 
 
-def minimumTotal(triangle):
+cache = {}
+
+
+def minimumTotalRecursive(triangle):
     global cache
     cache = {}
     m = None
@@ -10,9 +13,6 @@ def minimumTotal(triangle):
         if m is None or leaf < m:
             m = leaf
     return m
-
-
-cache = {}
 
 
 def _minimumTotal(triangle, i, j):
@@ -33,6 +33,24 @@ def _minimumTotal(triangle, i, j):
     return cache[(i, j)]
 
 
+def minimumTotal(triangle):
+    dp = []
+    for i in xrange(len(triangle)):
+        row = []
+        for j in xrange(len(triangle[i])):
+            if i == 0 and j == 0:
+                m = 0
+            elif j == 0:
+                m = dp[i-1][j]
+            elif j == i:
+                m = dp[i-1][j-1]
+            else:
+                m = min(dp[i-1][j-1], dp[i-1][j])
+            row.append(triangle[i][j]+m)
+        dp.append(row)
+    return min(dp[-1])
+
+
 if __name__ == '__main__':
     print minimumTotal([
         [2],
@@ -40,6 +58,7 @@ if __name__ == '__main__':
         [6, 5, 7],
         [4, 1, 8, 3]
     ])
+
     print minimumTotal([
         [1],
         [2, 3],
