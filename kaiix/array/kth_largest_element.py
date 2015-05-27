@@ -14,13 +14,10 @@ def findKthLargest(nums, k):
 #  pivot index = 0
 def pivoting(nums):
     r, p, q = 0, 0, 1
-    while q < len(nums):
+    for q in xrange(1, len(nums)):
         if nums[q] > nums[r]:
             nums[p+1], nums[q] = nums[q], nums[p+1]
-            q += 1
             p += 1
-        else:
-            q += 1
     nums[r], nums[p] = nums[p], nums[r]
     return nums, p
 
