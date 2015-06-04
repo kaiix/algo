@@ -14,37 +14,18 @@ def numDistinct2(s, t):
 
 
 def numDistinct(s, t):
-    if len(s) == 0 and len(t) == 0:
-        return 1
-    if len(s) == 0 and len(t) > 0:
-        return 0
-    if len(s) > 0 and len(t) == 0:
-        return 1
-    if len(s) < len(t):
-        return 0
+    dp = [[0] * (len(t)+1) for i in xrange(len(s)+1)]
+    for i in xrange(len(s)+1):
+        dp[i][len(t)] = 1
 
-    dp = [[0] * len(t) for i in xrange(len(s))]
     for i in reversed(xrange(len(s))):
         for j in reversed(xrange(len(t))):
             if len(t)-j > len(s)-i:
                 break
             if s[i] != t[j]:
-                if i+1 >= len(s):
-                    dp[i][j] = 0
-                else:
-                    dp[i][j] = dp[i+1][j]
-                subnum = 0
+                dp[i][j] = dp[i+1][j]
             else:
-                if j+1 >= len(t):
-                    subnum = 1
-                elif i+1 >= len(s):
-                    subnum = 0
-                else:
-                    subnum = dp[i+1][j+1]
-            if i+1 < len(s):
-                dp[i][j] = dp[i+1][j] + subnum
-            else:
-                dp[i][j] = subnum
+                dp[i][j] = dp[i+1][j] + dp[i+1][j+1]
     return dp[0][0]
 
 
