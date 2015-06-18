@@ -4,6 +4,7 @@
 def combinationSum(candidates, target):
     return _combinationSum(sorted(candidates), target)
 
+
 def _combinationSum(candidates, target):
     if target == 0:
         return [[]]
@@ -23,6 +24,24 @@ def _combinationSum(candidates, target):
                     result.append([candidates[i]]*times+j)
                 times += 1
         return result
+
+
+# slower
+# sorted candidates
+def cs(candidates, target):
+    if len(candidates) <= 0 or target <= 0:
+        return []
+
+    result = cs(candidates[1:], target)
+
+    if candidates[0] == target:
+        result.append([candidates[0]])
+    elif candidates[0] < target:
+        solutions = cs(candidates, target-candidates[0])
+        for s in solutions:
+            result.append([candidates[0]] + s)
+
+    return result
 
 
 if __name__ == '__main__':
