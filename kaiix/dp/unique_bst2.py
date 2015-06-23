@@ -30,16 +30,45 @@ def generateTreesInRange(b, e):
     return result
 
 
+def generateTreesDP(n):
+    if n <= 0:
+        return [[]]
+
+    dp = [[[] for x in xrange(n)] for x in xrange(n)]
+    for i in xrange(n):
+        dp[i][i].append(TreeNode(i+1))
+    for i in reversed(xrange(n)):
+        for j in xrange(i+1, n):
+            for r in xrange(i, j+1):
+                if r-1 < i:
+                    left = [None]
+                else:
+                    left = dp[i][r-1]
+                if r+1 > j:
+                    right = [None]
+                else:
+                    right = dp[r+1][j]
+                for lhs in left:
+                    for rhs in right:
+                        t = TreeNode(r+1)
+                        t.left = lhs
+                        t.right = rhs
+                        dp[i][j].append(t)
+    return dp[0][-1]
+
+
 def printTree(root):
     stk = [root]
     while stk:
         node = stk.pop(0)
-        print node.val
-        if node.left:
+        if node:
+            print node.val,
+        else:
+            print '#',
+        if node:
             stk.append(node.left)
-        if node.right:
             stk.append(node.right)
-    print '=' * 10
+    print
 
 
 if __name__ == '__main__':
