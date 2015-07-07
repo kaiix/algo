@@ -7,15 +7,14 @@ def findMin(nums):
 
     i, j = 0, len(nums)-1
     while i < j:
-        mid = (i+j) / 2
-        if nums[mid] >= nums[i] and nums[mid] < nums[j]:
+        if nums[i] < nums[j]:
             return nums[i]
-        if nums[mid] < nums[i]:
-            j = mid
-        elif nums[mid] > nums[j]:
+        mid = (i+j) / 2
+        if nums[mid] >= nums[i]:
             i = mid + 1
+        else:
+            j = mid
     return nums[i]
-
 
 def findMin2(nums):
     if len(nums) <= 0:
