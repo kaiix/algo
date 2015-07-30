@@ -1,7 +1,7 @@
 #  https://leetcode.com/problems/trapping-rain-water/
 
 
-def trap2(height):
+def trap3(height):
     s, i, bars = 0, 0, []
     while i < len(height):
         if bars and height[i] >= bars[-1]:
@@ -20,7 +20,7 @@ def trap2(height):
     return s
 
 
-def trap(height):
+def trap2(height):
     highest_idx = 0
     for i in xrange(len(height)):
         if height[i] > height[highest_idx]:
@@ -34,6 +34,22 @@ def trap(height):
     for i in reversed(xrange(highest_idx+1, len(height))):
         h = max(h, height[i])
         s += h - height[i]
+    return s
+
+
+def trap(height):
+    l, r = 0, len(height)-1
+    lh, rh = 0, 0
+    s = 0
+    while l < r:
+        if height[l] < height[r]:
+            lh = max(height[l], lh)
+            s += lh - height[l]
+            l += 1
+        else:
+            rh = max(height[r], rh)
+            s += rh - height[r]
+            r -= 1
     return s
 
 
