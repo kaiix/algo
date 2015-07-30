@@ -2,26 +2,20 @@
 
 
 def trap(height):
-    if len(height) <= 1:
-        return 0
-
-    stk = []
-    i = 0
-    s = 0
+    s, i, bars = 0, 0, []
     while i < len(height):
-        if stk and height[i] > height[stk[-1][1]]:
-            h = min(height[stk[0][1]], height[i])
-            w = 0
-            while stk and height[stk[-1][1]] <= height[i]:
-                bar = stk.pop()
-                w += bar[0]
-                s += (h - height[bar[1]]) * bar[0]
-            if h == height[i]:
-                stk.append((w+1, i))
+        if bars and height[i] >= bars[-1]:
+            if bars[0] <= height[i]:
+                h = bars[0]
+                while bars:
+                    s += h - bars.pop()
             else:
-                stk.append((1, i))
-        else:
-            stk.append((1, i))
+                j = len(bars)-1
+                while j >= 0 and bars[j] < height[i]:
+                    s += height[i] - bars[j]
+                    bars[j] = height[i]
+                    j -= 1
+        bars.append(height[i])
         i += 1
     return s
 
