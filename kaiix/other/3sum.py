@@ -4,7 +4,6 @@
 def threeSum(nums):
     nums = sorted(nums)
     result = []
-    i = 0
     for i in xrange(len(nums)):
         if i > 0 and nums[i] == nums[i-1]:
             continue
